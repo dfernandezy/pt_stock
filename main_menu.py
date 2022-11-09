@@ -176,9 +176,14 @@ while menu_actual >= 0:
               if opc == 1:
                   print("Introduzca el artículo que desee buscar: ")
                   input("")
+                  
               elif opc == 2:
                   menu_actual = 0
               elif opc == 3:
                   menu_actual = 0
               elif opc == 3:
                   menu_actual = 0
+              elif opc == 4:
+                  menu_actual = 0
+                  
+                  
