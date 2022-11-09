@@ -6,6 +6,7 @@ menu012 = "\n"+"*"*10+"Menu Modify Item 12"+"*"*10+"\n"+"1)Name\n2)Stock\n3)Pric
 menu013 = "\n"+"*"*10+"Menu Find Items 13"+"*"*10+"\n"+"1)Find item by id\n2)Find item by name\n3)Main menu\n4)Go back"
 menu014 = "\n"+"*"*10+"Menu List Item 14"+"*"*10+"\n"+"1)List by id\n2)List by name\n3)List by Stock\n4)List 3 best selling items\n5)List 3 least sold items\n6)Main Menu\n7)Go back"
 
+
 menu02 = "\n"+"*"*10+"Menu Purchases 02"+"*"*10+"\n"+"1)Find Purchase\n2)List Purchase\n3)New Purchase\n4)Go back"
 menu022 = "\n"+"*"*10+"Menu Modify List Purchases 22"+"*"*10+"\n"+"1)List all purchases\n2)List that contain some item\n3)Go back\n4)Main menu"
 
@@ -161,6 +162,9 @@ while menu_actual >= 0:
         print("Okay")
         break
 
+
+
+      
     while menu_actual == 13:
       print(menu013)
       opc = input(">Opcion: ")
@@ -174,11 +178,12 @@ while menu_actual >= 0:
               input("Pulse una tecla para continuar...\n")
           else:
               if opc == 1:
-                  print("Introduzca el artículo que desee buscar: ")
+                  print("Introduzca el artículo que desee buscar por ID: ")
                   input("")
                   
               elif opc == 2:
-                  menu_actual = 0
+                  print("Introduzca el artículo que desee buscar por NOMBRE: ")
+                  input("")
               elif opc == 3:
                   menu_actual = 0
               elif opc == 3:
@@ -186,4 +191,6 @@ while menu_actual >= 0:
               elif opc == 4:
                   menu_actual = 0
                   
-                  
+    while menu_actual == 14:
+      print(menu014)
+      print(input(""))
