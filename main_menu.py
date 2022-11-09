@@ -204,17 +204,70 @@ while menu_actual >= 0:
               input("Pulse una tecla para continuar...\n")
           else:
               if opc == 1:
-                  menu_actual = 0
+                  temp0411 = []
+                  for u in dict_articulos:
+                      temp0411.append(u)
+                  for i in range(len(temp0411) - 1):
+                      for j in range(i + 1, len(temp0411)):
+                          if temp0411[i] > temp0411[j]:
+                              temp = temp0411[i]
+                              temp0411[i] = temp0411[j]
+                              temp0411[j] = temp
+                  cadena = "\nId".ljust(10) + "Name".ljust(30) + "Stock".ljust(20) + "Price".ljust(5) +  "\n" + "*" * 65 + "\n"
+                  for u in temp0411:
+                      cadena = cadena + str(u).ljust(9) + dict_articulos[u]["nombre"].ljust(30) + \
+                               str(dict_articulos[u]["stock"]).ljust(20) + str(dict_articulos[u]["precio"]).ljust(5) + "\n"
+                  print(cadena)
+                  input("Enter to continue")
+                  menu_actual = 14
               elif opc == 2:
-                  menu_actual = 0
+                  temp0422 = []
+                  for u in dict_articulos:
+                      temp0422.append(dict_articulos[u]["nombre"])
+                  for i in range(len(temp0422) - 1):
+                      for j in range(i + 1, len(temp0422)):
+                          if temp0422[i] > temp0422[j]:
+                              temp = temp0422[i]
+                              temp0422[i] = temp0422[j]
+                              temp0422[j] = temp
+                  cadena = "\nId".ljust(10) + "Name".ljust(30) + "stock".ljust(20) + "precio".ljust(5) +  "\n" + "*" * 75 + "\n"
+                  for u in temp0422:
+                      for v in dict_articulos:
+                          if dict_articulos[v]["nombre"] == u:
+                              cadena = cadena + str(v).ljust(10) + dict_articulos[v]["nombre"].ljust(30) + \
+                                       str(dict_articulos[v]["stock"]).ljust(20) + str(dict_articulos[v]["precio"]).ljust(5) + "\n"
+                              break
+                  print(cadena)
+                  input("Enter to continue")
+                  menu_actual = 14
               elif opc == 3:
-                  menu_actual = 0
+                  temp0422 = []
+                  for u in dict_articulos:
+                      temp0422.append(dict_articulos[u]["stock"])
+                  for i in range(len(temp0422) - 1):
+                      for j in range(i + 1, len(temp0422)):
+                          if temp0422[i] > temp0422[j]:
+                              temp = temp0422[i]
+                              temp0422[i] = temp0422[j]
+                              temp0422[j] = temp
+                  cadena = "\nId".ljust(10) + "Name".ljust(30) + "stock".ljust(20) + "precio".ljust(
+                      5) + "\n" + "*" * 75 + "\n"
+                  for u in temp0422:
+                      for v in dict_articulos:
+                          if dict_articulos[v]["stock"] == u:
+                              cadena = cadena + str(v).ljust(10) + dict_articulos[v]["nombre"].ljust(30) + \
+                                       str(dict_articulos[v]["stock"]).ljust(20) + str(
+                                  dict_articulos[v]["precio"]).ljust(5) + "\n"
+                              break
+                  print(cadena)
+                  input("Enter to continue")
+                  menu_actual = 14
               elif opc == 3:
-                  menu_actual = 0
+                  menu_actual = 14
               elif opc == 4:
-                  menu_actual = 0
+                  menu_actual = 14
               elif opc == 5:
-                  menu_actual = 0
+                  menu_actual = 14
               elif opc == 6:
                   menu_actual = 0
               elif opc == 7:
