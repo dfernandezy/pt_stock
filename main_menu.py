@@ -193,4 +193,30 @@ while menu_actual >= 0:
                   
     while menu_actual == 14:
       print(menu014)
-      print(input(""))
+      opc = input(">Opcion: ")
+      if not opc.isdigit():
+          print("La opcion ha de ser numérica")
+          input("Pulse una tecla para continuar...\n")
+      else:
+          opc = int(opc)
+          if opc > 7 or opc < 1:
+              print("La opción ha de estar entre 1 y 3")
+              input("Pulse una tecla para continuar...\n")
+          else:
+              if opc == 1:
+                  menu_actual = 0
+              elif opc == 2:
+                  menu_actual = 0
+              elif opc == 3:
+                  menu_actual = 0
+              elif opc == 3:
+                  menu_actual = 0
+              elif opc == 4:
+                  menu_actual = 0
+              elif opc == 5:
+                  menu_actual = 0
+              elif opc == 6:
+                  menu_actual = 0
+              elif opc == 7:
+                  menu_actual = 1
+              
