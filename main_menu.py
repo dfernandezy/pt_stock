@@ -170,27 +170,7 @@ while menu_actual >= 0:
                     menu_actual = 14
                 elif opc == 5:
                     menu_actual = 0
-                    
-                    
-    while menu_actual == 2:
 
-        print(menu02)
-        opc = input(">Opcion: ")
-        if not opc.isdigit():
-            print("La opcion ha de ser numérica")
-            input("Pulse una tecla para continuar...\n")
-        else:
-            opc = int(opc)
-            if opc > 4 or opc < 1:
-                print("La opción ha de estar entre 1 y 3")
-                input("Pulse una tecla para continuar...\n")
-            else:
-                if opc == 1:
-                    menu_actual = 21
-                elif opc == 2:
-                    menu_actual = 22
-                elif opc == 4:
-                    menu_actual = 0
 
     while menu_actual == 3:
         print(menu03)
@@ -408,4 +388,50 @@ while menu_actual >= 0:
                   menu_actual = 0
               elif opc == 7:
                   menu_actual = 1
-              
+
+
+    while menu_actual == 2:
+
+        print(menu02)
+        opc = input(">Opcion: ")
+        if not opc.isdigit():
+            print("La opcion ha de ser numérica")
+            input("Pulse una tecla para continuar...\n")
+        else:
+            opc = int(opc)
+            if opc > 4 or opc < 1:
+                print("La opción ha de estar entre 1 y 3")
+                input("Pulse una tecla para continuar...\n")
+            else:
+                if opc == 1:
+                    print("no implementado")
+                    menu_actual=2
+                elif opc == 2:
+                    menu_actual = 22
+                elif opc == 3:
+                    print("no implementado")
+                    menu_actual=2
+                elif opc == 4:
+                    menu_actual = 0
+
+
+    while menu_actual == 22:
+        print(menu022)
+        opc = input(">Opcion: ")
+        if not opc.isdigit():
+            print("La opcion ha de ser numérica")
+            input("Pulse una tecla para continuar...\n")
+        else:
+            opc = int(opc)
+            if opc > 4 or opc < 1:
+                print("La opción ha de estar entre 1 y 3")
+                input("Pulse una tecla para continuar...\n")
+            else:
+                if opc == 1:
+                    print("Falta")
+                if opc == 2:
+                    print("Falta")
+                if opc == 3:
+                    menu_actual=2
+                if opc == 4:
+                    menu_actual=0
