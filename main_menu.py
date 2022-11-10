@@ -23,6 +23,7 @@ dict_articulos = {4: {"nombre": "ASUS TUF GeForce RTX", "stock": 6, "precio": 14
                   10: {"nombre": "Corsair DC Cable Pro Kit", "stock": 20, "precio": 110}, 
                   11: {"nombre": "Gigabyte GC-TITAN RIDGE 2.0", "stock": 15, "precio": 81},                 
                 }
+print("Hola")
 
 dict_compras = {"AA32E": {"fecha": 20201101, "articulos":{3:1,4:1}},
                 "AB37Z": {"fecha": 20201101, "articulos":{1:1,4:1}}, 
