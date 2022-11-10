@@ -218,6 +218,9 @@ while menu_actual >= 0:
               print("La opción ha de estar entre 1 y 3")
               input("Pulse una tecla para continuar...\n")
           else:
+
+              #id
+
               if opc == 1:
                   temp0411 = []
                   for u in dict_articulos:
@@ -235,6 +238,10 @@ while menu_actual >= 0:
                   print(cadena)
                   input("Enter to continue")
                   menu_actual = 14
+
+                  #name
+
+
               elif opc == 2:
                   temp0422 = []
                   for u in dict_articulos:
@@ -255,6 +262,9 @@ while menu_actual >= 0:
                   print(cadena)
                   input("Enter to continue")
                   menu_actual = 14
+
+                  #stock
+
               elif opc == 3:
                   temp0422 = []
                   for u in dict_articulos:
@@ -277,11 +287,72 @@ while menu_actual >= 0:
                   print(cadena)
                   input("Enter to continue")
                   menu_actual = 14
-              elif opc == 3:
-                  menu_actual = 14
+
+
+                #mas vendido
               elif opc == 4:
+                  temp0413 = {}
+                  for clave in dict_articulos:
+                      temp0413[clave] = 0
+
+                  for u in dict_compras:
+                      for clave, ventas in dict_compras[u]["articulos"].items():
+                          temp0413[clave] += ventas
+                  print(temp0413)
+
+                  temp0422 = list(temp0413.keys())
+
+                  for i in range(len(temp0422) - 1):
+                      for j in range(len(temp0422) - 1 - i):
+                          if temp0413[temp0422[j]] < temp0413[temp0422[j + 1]]:
+                              temp = temp0422[j]
+                              temp0422[j] = temp0422[j + 1]
+                              temp0422[j + 1] = temp
+                  print(temp0422)
+                  cadena = "\nId".ljust(10) + "Name".ljust(35) + "stock".ljust(20) + "Price".ljust(
+                      10) + "Sold out".ljust(5) + "\n" + "*" * 82 + "\n"
+
+                  for i in range(3):
+                      cadena = cadena + str(temp0422[i]).ljust(9) + dict_articulos[temp0422[i]]["nombre"].ljust(35) + \
+                               str(dict_articulos[temp0422[i]]["stock"]).ljust(20) + str(
+                          dict_articulos[temp0422[i]]["precio"]).ljust(11) + \
+                               str(temp0413[temp0422[i]]).ljust(5) + "\n"
+                  print(cadena)
+                  input("Enter to continue")
+
                   menu_actual = 14
+
+                  ##menos vendido
               elif opc == 5:
+                  temp0413 = {}
+                  for clave in dict_articulos:
+                      temp0413[clave] = 0
+
+                  for u in dict_compras:
+                      for clave, ventas in dict_compras[u]["articulos"].items():
+                          temp0413[clave] += ventas
+                  print(temp0413)
+
+                  temp0422 = list(temp0413.keys())
+
+                  for i in range(len(temp0422) - 1):
+                      for j in range(len(temp0422) - 1 - i):
+                          if temp0413[temp0422[j]] > temp0413[temp0422[j + 1]]:
+                              temp = temp0422[j]
+                              temp0422[j] = temp0422[j + 1]
+                              temp0422[j + 1] = temp
+                  print(temp0422)
+                  cadena = "\nId".ljust(10) + "Name".ljust(35) + "stock".ljust(20) + "Price".ljust(
+                      10) + "Sold out".ljust(5) + "\n" + "*" * 82 + "\n"
+
+                  for i in range(3):
+                      cadena = cadena + str(temp0422[i]).ljust(9) + dict_articulos[temp0422[i]]["nombre"].ljust(35) + \
+                               str(dict_articulos[temp0422[i]]["stock"]).ljust(20) + str(
+                          dict_articulos[temp0422[i]]["precio"]).ljust(11) + \
+                               str(temp0413[temp0422[i]]).ljust(5) + "\n"
+                  print(cadena)
+                  input("Enter to continue")
+
                   menu_actual = 14
               elif opc == 6:
                   menu_actual = 0
