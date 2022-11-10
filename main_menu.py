@@ -23,7 +23,7 @@ dict_articulos = {4: {"nombre": "ASUS TUF GeForce RTX", "stock": 6, "precio": 14
                   10: {"nombre": "Corsair DC Cable Pro Kit", "stock": 20, "precio": 110}, 
                   11: {"nombre": "Gigabyte GC-TITAN RIDGE 2.0", "stock": 15, "precio": 81},                 
                 }
-print("Hola")
+
 
 dict_compras = {"AA32E": {"fecha": 20201101, "articulos":{3:1,4:1}},
                 "AB37Z": {"fecha": 20201101, "articulos":{1:1,4:1}}, 
@@ -150,16 +150,69 @@ while menu_actual >= 0:
                                 input("Pulse una tecla para continuar...\n")
                             else:
                                 if opc == 1:
-                                    print("Name")
-                                    menu_actual = 12
+                                    numbre = input("New name: ")
+
+                                    cadena = ""
+                                    cadena += str("ID").ljust(10) + str(id).rjust(30) + "\n" + \
+                                              str("Name").ljust(10) + str(numbre).rjust(30) + "\n" + \
+                                              str("Stock").ljust(10) + str(dict_articulos[int(id)]["stock"]).rjust(
+                                        30) + "\n" + \
+                                              str("Price").ljust(10) + str(dict_articulos[int(id)]["precio"]).rjust(
+                                        30) + "\n"
+                                    print("Save the item as? Y/y = yes:")
+                                    print(cadena)
+                                    pregunta = input("Answer: ")
+                                    if pregunta == "Y" or pregunta == "y":
+                                        dict_articulos[int(id)]["nombre"] = numbre
+                                        menu_actual = 12
+                                    else:
+                                        menu_actual = 12
                                 elif opc == 2:
-                                    print("Stok")
-                                    menu_actual = 12
+                                    stock = input("New Stock: ")
+
+                                    cadena = ""
+                                    cadena += str("ID").ljust(10) + str(id).rjust(30) + "\n" + \
+                                              str("Name").ljust(10) + str(dict_articulos[int(id)]["nombre"]).rjust(
+                                        30) + "\n" + \
+                                              str("Stock").ljust(10) + str(stock).rjust(30) + "\n" + \
+                                              str("Price").ljust(10) + str(dict_articulos[int(id)]["precio"]).rjust(
+                                        30) + "\n"
+                                    print("Save the item as? Y/y = yes:")
+                                    print(cadena)
+                                    pregunta = input("Answer: ")
+                                    if pregunta == "Y" or pregunta == "y":
+                                        dict_articulos[int(id)]["stock"] = stock
+                                        menu_actual = 12
+                                    else:
+                                        menu_actual = 12
                                 elif opc == 3:
-                                    print("Price")
-                                    menu_actual = 12
+                                    price = input("New Price: ")
+                                    cadena = ""
+                                    cadena += str("ID").ljust(10) + str(id).rjust(30) + "\n" + \
+                                              str("Name").ljust(10) + str(dict_articulos[int(id)]["nombre"]).rjust(
+                                        30) + "\n" + \
+                                              str("Stock").ljust(10) + str(dict_articulos[int(id)]["stock"]).rjust(
+                                        30) + "\n" + \
+                                              str("Price").ljust(10) + str(price).rjust(30) + "\n"
+                                    print("Save the item as? Y/y = yes:")
+                                    print(cadena)
+                                    pregunta = input("Answer: ")
+                                    if pregunta == "Y" or pregunta == "y":
+                                        dict_articulos[int(id)]["precio"] = price
+                                        menu_actual = 12
+                                    else:
+                                        menu_actual = 12
                                 elif opc == 4:
-                                    print("Show items")
+                                    cadena = ""
+                                    cadena += str("ID").ljust(10) + str(id).rjust(30) + "\n" + \
+                                              str("Name").ljust(10) + str(dict_articulos[int(id)]["nombre"]).rjust(
+                                        30) + "\n" + \
+                                              str("Stock").ljust(10) + str(dict_articulos[int(id)]["stock"]).rjust(
+                                        30) + "\n" + \
+                                              str("Price").ljust(10) + str(dict_articulos[int(id)]["precio"]).rjust(
+                                        30) + "\n"
+                                    print(cadena)
+                                    input("Press any key to continue")
                                     menu_actual = 12
                                 elif opc == 5:
                                     menu_actual = 0
@@ -199,7 +252,7 @@ while menu_actual >= 0:
 
     while menu_actual == 13:
       print(menu013)
-      opc = input(">Opcion: ")
+      opc = input("Opcion: ")
       if not opc.isdigit():
           print("La opcion ha de ser numérica")
           input("Pulse una tecla para continuar...\n")
@@ -210,10 +263,9 @@ while menu_actual >= 0:
               input("Pulse una tecla para continuar...\n")
           else:
               if opc == 1:
-                
-                  usuario = int(input("Introduce el elemento a buscar: "))
-                  print("ID to find: ")
-                  print(usuario)
+                  #Buscar por id
+                  idbuscar = int(input("Id to find: "))
+                  print(idbuscar)
                   print("Items in Asian Shop Center")
                   
                   cadena = "\nId".ljust(10) + "Name".ljust(30) + "Stock".ljust(20) + "Price".ljust(5) +  "\n" + "*" * 65 + "\n"
@@ -222,15 +274,39 @@ while menu_actual >= 0:
                       temp0411.append(u)
 
                   for u in temp0411:
-                    if u == usuario:
+                    if u == idbuscar:
                       cadena = cadena + str(u).ljust(9) + dict_articulos[u]["nombre"].ljust(30) + str(dict_articulos[u]["stock"]).ljust(20) + str(dict_articulos[u]["precio"]).ljust(5) + "\n"
                           
                   print(cadena)
                   input("Press any key to continue ")
                   
               elif opc == 2:
-                  print("Introduzca el artículo que desee buscar por NOMBRE: ")
-                  input("")
+                  #Buscar por nombre
+                  usuario = input("What to look for?: ")
+                  print(usuario)
+                  print("Items in Asian Shop Center")
+
+                  cadena = "\nId".ljust(10) + "Name".ljust(30) + "Stock".ljust(20) + "Price".ljust(
+                      5) + "\n" + "*" * 65 + "\n"
+                  temp0411 = []
+                  for u in dict_articulos:
+                      temp0411.append(dict_articulos[u]["nombre"])
+                  cont = 0
+                  cont2=0
+                  for u in dict_articulos:
+                      if temp0411[cont].find(usuario) > 0:
+                          cadena = cadena + str(u).ljust(9) + dict_articulos[u]["nombre"].ljust(30) + str(
+                              dict_articulos[u]["stock"]).ljust(20) + str(dict_articulos[u]["precio"]).ljust(5) + "\n"
+                          cont2+=1
+                      cont += 1
+                  if cont2 == 0:
+                      cadena = cadena + str("There's not items with the string = " + usuario).ljust(9) + "\n"
+                      print(cadena)
+                      input("Press any key to continue ")
+                  else:
+                      print(cadena)
+                      input("Press any key to continue ")
+
               elif opc == 3:
                   menu_actual = 0
               elif opc == 3:
