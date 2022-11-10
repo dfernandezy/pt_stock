@@ -178,8 +178,23 @@ while menu_actual >= 0:
               input("Pulse una tecla para continuar...\n")
           else:
               if opc == 1:
-                  print("Introduzca el artículo que desee buscar por ID: ")
-                  input("")
+                
+                  usuario = int(input("Introduce el elemento a buscar: "))
+                  print("ID to find: ")
+                  print(usuario)
+                  print("Items in Asian Shop Center")
+                  
+                  cadena = "\nId".ljust(10) + "Name".ljust(30) + "Stock".ljust(20) + "Price".ljust(5) +  "\n" + "*" * 65 + "\n"
+                  temp0411 = []
+                  for u in dict_articulos:
+                      temp0411.append(u)
+
+                  for u in temp0411:
+                    if u == usuario:
+                      cadena = cadena + str(u).ljust(9) + dict_articulos[u]["nombre"].ljust(30) + str(dict_articulos[u]["stock"]).ljust(20) + str(dict_articulos[u]["precio"]).ljust(5) + "\n"
+                          
+                  print(cadena)
+                  input("Press any key to continue ")
                   
               elif opc == 2:
                   print("Introduzca el artículo que desee buscar por NOMBRE: ")
