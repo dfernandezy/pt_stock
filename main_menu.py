@@ -110,7 +110,60 @@ while menu_actual >= 0:
                 if opc == 1:
                     menu_actual = 0
                 elif opc == 2:
+                    ########
+                    flag0311 = True
+                    id = input("ID of the item to modify: ")
+                    while flag0311:
+                        if id.isnumeric():
+                            for u in dict_articulos:
+                                if int(id) == u:
+                                    flag0311 = False
+                                    break
+                            if flag0311 == True:
+                                print("There's no item with ID : ", id)
+                                input("Press any key to continue")
+                                id = input("ID of the item to modify: ")
+                        if not id.isnumeric():
+                            print("ID of items are only numerics")
+                            input("Press any key to continue")
+                            id = input("ID of the item to modify: ")
+
+                    cadena = ""
+                    cadena += str("\nID").ljust(10) + str(id).rjust(30) + "\n" + \
+                              str("Name").ljust(10) + str(dict_articulos[int(id)]["nombre"]).rjust(30) + "\n" + \
+                              str("Stock").ljust(10) + str(dict_articulos[int(id)]["stock"]).rjust(30) + "\n" + \
+                              str("Price").ljust(10) + str(dict_articulos[int(id)]["precio"]).rjust(30) + "\n"
+                    print(cadena)
+                    input("Press any key to continue")
                     menu_actual = 12
+                    while menu_actual == 12:
+                        print(menu012)
+                        opc = input(">Opcion: ")
+                        if not opc.isdigit():
+                            print("La opcion ha de ser numérica")
+                            input("Pulse una tecla para continuar...\n")
+                        else:
+                            opc = int(opc)
+                            if opc > 6 or opc < 1:
+                                print("La opción ha de estar entre 1 y 3")
+                                input("Pulse una tecla para continuar...\n")
+                            else:
+                                if opc == 1:
+                                    print("Name")
+                                    menu_actual = 12
+                                elif opc == 2:
+                                    print("Stok")
+                                    menu_actual = 12
+                                elif opc == 3:
+                                    print("Price")
+                                    menu_actual = 12
+                                elif opc == 4:
+                                    print("Show items")
+                                    menu_actual = 12
+                                elif opc == 5:
+                                    menu_actual = 0
+                                elif opc == 6:
+                                    menu_actual = 1
                 elif opc == 3:
                     menu_actual = 13
                 elif opc == 4:
@@ -163,8 +216,6 @@ while menu_actual >= 0:
         break
 
 
-
-      
     while menu_actual == 13:
       print(menu013)
       opc = input(">Opcion: ")
@@ -352,7 +403,6 @@ while menu_actual >= 0:
                                str(temp0413[temp0422[i]]).ljust(5) + "\n"
                   print(cadena)
                   input("Enter to continue")
-
                   menu_actual = 14
               elif opc == 6:
                   menu_actual = 0
