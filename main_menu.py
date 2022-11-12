@@ -93,7 +93,7 @@ while menu_actual >= 0:
         elif opc == 3:
             menu_actual = 3
         elif opc == 4:
-            print(f"closed...")
+            print(f"\nclosed...")
             menu_actual = -1
 
 
@@ -504,6 +504,7 @@ while menu_actual >= 0:
               elif opc == 7:
                   menu_actual = 1
 
+    ##Menu Purchases 02
 
     while menu_actual == 2:
 
@@ -515,21 +516,23 @@ while menu_actual >= 0:
         else:
             opc = int(opc)
             if opc > 4 or opc < 1:
-                print("La opción ha de estar entre 1 y 3")
+                print("La opción ha de estar entre 1 y 4")
                 input("Pulse una tecla para continuar...\n")
             else:
                 if opc == 1:
-                    print("no implementado")
+                    print("\nNo Implementado!!")
+                    input("Press any key to continue")
                     menu_actual=2
                 elif opc == 2:
                     menu_actual = 22
                 elif opc == 3:
-                    print("no implementado")
+                    print("\nNo Implementado!!")
+                    input("Press any key to continue")
                     menu_actual=2
                 elif opc == 4:
                     menu_actual = 0
 
-
+    ##Menu list  Purchases 22
     while menu_actual == 22:
         print(menu022)
         opc = input(">Opcion: ")
@@ -543,9 +546,79 @@ while menu_actual >= 0:
                 input("Pulse una tecla para continuar...\n")
             else:
                 if opc == 1:
-                    print("Falta")
+
+                    ##1)List all purchases
+
+                    total = 0
+                    listatotal = []
+                    for u in dict_compras:
+                        for clave, ventas in dict_compras[u]["articulos"].items():
+                            total += (dict_articulos[clave]["precio"] * ventas)
+                        listatotal.append(total)
+                        total = 0
+
+                    cadena = "\nID Compra".ljust(15) + "Cliente".ljust(30) + "Fecha".rjust(8) + "total_compras".rjust(
+                        22) + "\n" + "*" * 74 + "\n"
+                    cont = 0
+                    for v in dict_compras:
+                        cadena = cadena + str(v).ljust(14) + dict_clientes[compra_cliente[v]]["nombre"].ljust(30) + \
+                                 str(dict_compras[v]["fecha"]).rjust(0) + str(listatotal[cont]).rjust(22) + "\n"
+                        cont += 1
+                    print(cadena)
+                    input("Press any key to continue")
                 if opc == 2:
-                    print("Falta")
+
+                    ##2)List purchases that contain some item
+
+                    id = input("ID del artículo: ")
+                    temp0413 = {}
+                    for u in dict_compras:
+                        for clave, ventas in dict_compras[u]["articulos"].items():
+                            if int(id) == clave:
+                                temp0413[u] = dict_compras[u]["articulos"]
+
+                    print()
+                    if len(temp0413) > 0:
+                        print(f"Listamos compras del articulo  {id}")
+                        tempdni = {}
+                        tempdni = list(cliente_compra.keys())
+
+                        total = 0
+                        total2 = 0
+                        listatotal = []
+                        listatotal2 = []
+                        for u in temp0413:
+                            for clave, ventas in dict_compras[u]["articulos"].items():
+                                total += (dict_articulos[clave]["precio"] * ventas)
+                            listatotal2.append(total)
+                            total = 0
+
+                        for u in temp0413:
+                            for clave, ventas in dict_compras[u]["articulos"].items():
+                                total2 += (dict_articulos[clave]["precio"])
+                                listatotal.append(total2)
+                                total2 = 0
+
+                        cadena = "\nID".ljust(10) + "Customer".ljust(15) + "ID item".ljust(10) + "Name item".ljust(
+                            30) + "Amount".ljust(16) + "Price".ljust(16) + "\n" + "*" * 85 + "\n"
+                        cont = 0
+                        cont2 = 0
+                        for cliente in temp0413:
+                            cadena = cadena.strip(" ") + str(cliente).ljust(10) + \
+                                     dict_clientes[compra_cliente[cliente]]["nombre"].ljust(15)
+                            for datos in temp0413[cliente]:
+                                cadena = cadena + str(datos).ljust(10) + str(dict_articulos[datos]["nombre"]).ljust(
+                                    30) + str(temp0413[cliente][datos]).ljust(15) + str(listatotal[cont]).ljust(
+                                    16) + "\n" + "   ".ljust(10) + "   ".ljust(15)
+                                cont += 1
+                            cadena = cadena.strip(" ") + "-" * 88 + "\n"
+                            cadena = cadena + "   ".rjust(80) + str(listatotal2[cont2]).ljust(0) + "\n\n\n"
+                            cont2 += 1
+                        print(cadena)
+                        input("\nPress any key to continue")
+                    else:
+                        print(f"There is not item with ID:  {id}")
+                        input("\nPress any key to continue")
                 if opc == 3:
                     menu_actual=2
                 if opc == 4:
