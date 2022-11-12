@@ -504,7 +504,6 @@ while menu_actual >= 0:
               elif opc == 7:
                   menu_actual = 1
 
-    ##Menu Purchases 02
 
     while menu_actual == 2:
 
@@ -516,23 +515,21 @@ while menu_actual >= 0:
         else:
             opc = int(opc)
             if opc > 4 or opc < 1:
-                print("La opción ha de estar entre 1 y 4")
+                print("La opción ha de estar entre 1 y 3")
                 input("Pulse una tecla para continuar...\n")
             else:
                 if opc == 1:
-                    print("\nNo Implementado!!")
-                    input("Press any key to continue")
+                    print("no implementado")
                     menu_actual=2
                 elif opc == 2:
                     menu_actual = 22
                 elif opc == 3:
-                    print("\nNo Implementado!!")
-                    input("Press any key to continue")
+                    print("no implementado")
                     menu_actual=2
                 elif opc == 4:
                     menu_actual = 0
 
-    ##Menu list  Purchases 22
+
     while menu_actual == 22:
         print(menu022)
         opc = input(">Opcion: ")
@@ -546,9 +543,6 @@ while menu_actual >= 0:
                 input("Pulse una tecla para continuar...\n")
             else:
                 if opc == 1:
-
-                    ##1)List all purchases
-
                     total = 0
                     listatotal = []
                     for u in dict_compras:
@@ -565,10 +559,7 @@ while menu_actual >= 0:
                                  str(dict_compras[v]["fecha"]).rjust(0) + str(listatotal[cont]).rjust(22) + "\n"
                         cont += 1
                     print(cadena)
-                    input("Press any key to continue")
                 if opc == 2:
-
-                    ##2)List purchases that contain some item
 
                     id = input("ID del artículo: ")
                     temp0413 = {}
@@ -615,10 +606,9 @@ while menu_actual >= 0:
                             cadena = cadena + "   ".rjust(80) + str(listatotal2[cont2]).ljust(0) + "\n\n\n"
                             cont2 += 1
                         print(cadena)
-                        input("\nPress any key to continue")
                     else:
                         print(f"There is not item with ID:  {id}")
-                        input("\nPress any key to continue")
+
                 if opc == 3:
                     menu_actual=2
                 if opc == 4:
