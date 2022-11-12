@@ -504,6 +504,7 @@ while menu_actual >= 0:
               elif opc == 7:
                   menu_actual = 1
 
+    ##Menu Purchases 02
 
     while menu_actual == 2:
 
@@ -515,21 +516,23 @@ while menu_actual >= 0:
         else:
             opc = int(opc)
             if opc > 4 or opc < 1:
-                print("La opción ha de estar entre 1 y 3")
+                print("La opción ha de estar entre 1 y 4")
                 input("Pulse una tecla para continuar...\n")
             else:
                 if opc == 1:
-                    print("no implementado")
+                    print("\nNo Implementado!!")
+                    input("Press any key to continue")
                     menu_actual=2
                 elif opc == 2:
                     menu_actual = 22
                 elif opc == 3:
-                    print("no implementado")
+                    print("\nNo Implementado!!")
+                    input("Press any key to continue")
                     menu_actual=2
                 elif opc == 4:
                     menu_actual = 0
 
-
+    ##Menu list  Purchases 22
     while menu_actual == 22:
         print(menu022)
         opc = input(">Opcion: ")
@@ -543,7 +546,24 @@ while menu_actual >= 0:
                 input("Pulse una tecla para continuar...\n")
             else:
                 if opc == 1:
-                    print("Falta")
+                    ###list all Purchases
+                    total = 0
+                    listatotal = []
+                    for u in dict_compras:
+                        for clave, ventas in dict_compras[u]["articulos"].items():
+                            total += (dict_articulos[clave]["precio"] * ventas)
+                        listatotal.append(total)
+                        total = 0
+
+                    cadena = "\nID Compra".ljust(15) + "Cliente".ljust(30) + "Fecha".rjust(8) + "total_compras".rjust(
+                        22) + "\n" + "*" * 74 + "\n"
+                    cont = 0
+                    for v in dict_compras:
+                        cadena = cadena + str(v).ljust(14) + dict_clientes[compra_cliente[v]]["nombre"].ljust(30) + \
+                                 str(dict_compras[v]["fecha"]).rjust(0) + str(listatotal[cont]).rjust(22) + "\n"
+                        cont += 1
+                    print(cadena)
+                    input("Press any key to continue")
                 if opc == 2:
                     print("Falta")
                 if opc == 3:
