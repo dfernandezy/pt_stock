@@ -1,4 +1,5 @@
 import random
+
 menu00 = "\n"+"*"*10+"Main Menu 00"+"*"*10+"\n"+"1)Items \n2)Purchases \n3)Customers \n4)Exit"
 menu01 = "\n"+"*"*10+"Menu Item 01"+"*"*10+"\n"+"1)New Item\n2)Modity Item\n3)Find Items\n4)List Items\n5)Go back"
 menu012 = "\n"+"*"*10+"Menu Modify Item 12"+"*"*10+"\n"+"1)Name\n2)Stock\n3)Price\n4)Show item\n5)Main Menu\n6)Go back"
@@ -92,6 +93,7 @@ while menu_actual >= 0:
         elif opc == 3:
             menu_actual = 3
         elif opc == 4:
+            print(f"closed...")
             menu_actual = -1
 
 
@@ -109,7 +111,7 @@ while menu_actual >= 0:
                 input("Pulse una tecla para continuar...\n")
             else:
                 if opc == 1:
-                    menu_actual = 0
+                    menu_actual = 11
                 elif opc == 2:
                     ########
                     flag0311 = True
@@ -225,6 +227,46 @@ while menu_actual >= 0:
                 elif opc == 5:
                     menu_actual = 0
 
+    while menu_actual == 11:
+
+        ##Crear item
+
+        flag0344 = True
+        id = input("Id of the new item: ")
+        while flag0344:
+            if id.isnumeric():
+                comprovar = 0
+                for u in dict_articulos:
+                    if int(id) == u:
+                        comprovar += 1
+                if comprovar != 0:
+                    print("\nID : {} already exists".format(id))
+                    input("Press any key to continue")
+                    id = input("ID of the item to modify: ")
+                if comprovar == 0:
+                    flag0311 = False
+                    break
+            if not id.isnumeric():
+                print("Incorrect ID")
+                input("Press any key to continue")
+                id = input("ID of the item to modify: ")
+
+        print("\nId of the new item: {}\n".format(id))
+        nombre = input("Item's name: ")
+        stock = input("Items in stock: ")
+        precio = input("Price of the new item: ")
+        print("\nID: {}\nName: {}\nStock: {}\nPrice: {}".format(id, nombre, stock, precio))
+        pregunta = input("Save the item as? Y/y = yes:")
+        if pregunta == "Y" or pregunta == "y":
+            dict_articulos.update({int(id): {"nombre": nombre, "stock": int(stock), "precio": int(precio)}})
+            print("Item saved!!")
+            input("\nPress any key to continue")
+
+        else:
+            print("Item not updated")
+            input("\nPress any key to continue")
+
+        menu_actual = 1
 
     while menu_actual == 3:
         print(menu03)
@@ -244,10 +286,6 @@ while menu_actual >= 0:
                     menu_actual = 0
                 elif opc == 3:
                     menu_actual = 0
-
-    while menu_actual == 4:
-        print("Okay")
-        break
 
 
     while menu_actual == 13:
@@ -406,7 +444,7 @@ while menu_actual >= 0:
                   for u in dict_compras:
                       for clave, ventas in dict_compras[u]["articulos"].items():
                           temp0413[clave] += ventas
-                  print(temp0413)
+
 
                   temp0422 = list(temp0413.keys())
 
@@ -416,7 +454,7 @@ while menu_actual >= 0:
                               temp = temp0422[j]
                               temp0422[j] = temp0422[j + 1]
                               temp0422[j + 1] = temp
-                  print(temp0422)
+
                   cadena = "\nId".ljust(10) + "Name".ljust(35) + "stock".ljust(20) + "Price".ljust(
                       10) + "Sold out".ljust(5) + "\n" + "*" * 82 + "\n"
 
@@ -439,7 +477,7 @@ while menu_actual >= 0:
                   for u in dict_compras:
                       for clave, ventas in dict_compras[u]["articulos"].items():
                           temp0413[clave] += ventas
-                  print(temp0413)
+
 
                   temp0422 = list(temp0413.keys())
 
@@ -449,7 +487,7 @@ while menu_actual >= 0:
                               temp = temp0422[j]
                               temp0422[j] = temp0422[j + 1]
                               temp0422[j + 1] = temp
-                  print(temp0422)
+
                   cadena = "\nId".ljust(10) + "Name".ljust(35) + "stock".ljust(20) + "Price".ljust(
                       10) + "Sold out".ljust(5) + "\n" + "*" * 82 + "\n"
 
