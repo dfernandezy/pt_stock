@@ -97,6 +97,9 @@ while menu_actual >= 0:
             menu_actual = -1
 
 
+    ###  1)Items
+
+
     while menu_actual == 1:
 
         print(menu01)
@@ -268,24 +271,7 @@ while menu_actual >= 0:
 
         menu_actual = 1
 
-    while menu_actual == 3:
-        print(menu03)
-        opc = input(">Opcion: ")
-        if not opc.isdigit():
-            print("La opcion ha de ser numérica")
-            input("Pulse una tecla para continuar...\n")
-        else:
-            opc = int(opc)
-            if opc > 3 or opc < 1:
-                print("La opción ha de estar entre 1 y 3")
-                input("Pulse una tecla para continuar...\n")
-            else:
-                if opc == 1:
-                    menu_actual = 31
-                elif opc == 2:
-                    menu_actual = 0
-                elif opc == 3:
-                    menu_actual = 0
+
 
 
     while menu_actual == 13:
@@ -505,6 +491,8 @@ while menu_actual >= 0:
                   menu_actual = 1
 
 
+    ###  2)Purchases
+
     while menu_actual == 2:
 
         print(menu02)
@@ -519,12 +507,12 @@ while menu_actual >= 0:
                 input("Pulse una tecla para continuar...\n")
             else:
                 if opc == 1:
-                    print("no implementado")
+                    print("\nNo Implementado!!")
                     menu_actual=2
                 elif opc == 2:
                     menu_actual = 22
                 elif opc == 3:
-                    print("no implementado")
+                    print("\nNo Implementado!!")
                     menu_actual=2
                 elif opc == 4:
                     menu_actual = 0
@@ -539,10 +527,13 @@ while menu_actual >= 0:
         else:
             opc = int(opc)
             if opc > 4 or opc < 1:
-                print("La opción ha de estar entre 1 y 3")
+                print("La opción ha de estar entre 1 y 4")
                 input("Pulse una tecla para continuar...\n")
             else:
                 if opc == 1:
+
+                    ###    1)Find purchase
+
                     total = 0
                     listatotal = []
                     for u in dict_compras:
@@ -559,7 +550,11 @@ while menu_actual >= 0:
                                  str(dict_compras[v]["fecha"]).rjust(0) + str(listatotal[cont]).rjust(22) + "\n"
                         cont += 1
                     print(cadena)
+                    input("Press any key to continue")
+
                 if opc == 2:
+
+                    ###    2)List purchases that contain some item
 
                     id = input("ID del artículo: ")
                     temp0413 = {}
@@ -603,13 +598,155 @@ while menu_actual >= 0:
                                     16) + "\n" + "   ".ljust(10) + "   ".ljust(15)
                                 cont += 1
                             cadena = cadena.strip(" ") + "-" * 88 + "\n"
-                            cadena = cadena + "   ".rjust(80) + str(listatotal2[cont2]).ljust(0) + "\n\n\n"
+                            cadena = cadena + "Total".rjust(0) + " ".rjust(75) + str(listatotal2[cont2]).ljust(0) + "\n\n\n"
                             cont2 += 1
                         print(cadena)
+                        input("Press any key to continue")
                     else:
                         print(f"There is not item with ID:  {id}")
+                        input("Press any key to continue")
 
                 if opc == 3:
                     menu_actual=2
                 if opc == 4:
                     menu_actual=0
+
+
+
+    #####   3)Customers
+
+    while menu_actual == 3:
+        print(menu03)
+        opc = input(">Opcion: ")
+        if not opc.isdigit():
+            print("La opcion ha de ser numérica")
+            input("Pulse una tecla para continuar...\n")
+        else:
+            opc = int(opc)
+            if opc > 3 or opc < 1:
+                print("La opción ha de estar entre 1 y 3")
+                input("Pulse una tecla para continuar...\n")
+            else:
+                if opc == 1:
+
+                    #####   3-1) New customer
+
+
+                    lestrasDNI = ["T", "R", "W", "A", "G", "M", "Y", "F", "P", "D", "X", "B", "N", "J", "Z", "S", "Q","V", "H", "L", "C", "K", "E"]
+                    while True:
+                        dni = input("DNI del nuevo usuario: \n")
+                        if len(dni) != 9 or not dni[0:8].isdigit():
+                            print("Coloca bien el DNI")
+                            dni = input("DNI del nuevo usuario: \n")
+
+                        elif lestrasDNI[int(dni[0:8]) % 23].lower != dni[8].lower:
+                            print("La letra del DNI es incorrecta")
+                            dni = input("DNI del nuevo usuario: \n")
+                        else:
+                            print("DNI Correcto")
+
+                        nombre = input("Introduce el nombre del cliente ")
+                        telefono = input('Introduce el teléfono del cliente: ')
+                        cliente = {'nombre': nombre, 'telefono': telefono, }
+                        cliente_compra[dni] = cliente
+                        for clave, valor in dict_clientes.items():
+                            print(clave, valor['nombre'])
+                        break
+                elif opc == 2:
+                    menu_actual = 32
+                elif opc == 3:
+                    menu_actual = 0
+
+
+
+    ##  3-2) Find customer
+
+    while menu_actual == 32:
+        print(menu032)
+        opc = input(">Opcion: ")
+        if not opc.isdigit():
+            print("La opcion ha de ser numérica")
+            input("Pulse una tecla para continuar...\n")
+        else:
+            opc = int(opc)
+            if opc > 5 or opc < 1:
+                print("La opción ha de estar entre 1 y 5")
+                input("Pulse una tecla para continuar...\n")
+            else:
+                if opc == 1:
+
+                    ### Encontrar por DNI
+
+                    nif = input("Introduce el NIF del cliente: ")
+                    if nif in dict_clientes:
+                        print("")
+                        print("NIF: ", nif)
+                        for clave, valor in dict_clientes[nif].items():
+                            print(clave.title() + ":", valor)
+                        input("Pulsa para continuar")
+                    else:
+                        print("No existe!")
+                        nif = input("Introduce el NIF del cliente: ")
+
+                    # 3-2-1) menu show customer's purchases
+
+                    print(menu0321)
+                    opc = input(">Opcion: ")
+                    if not opc.isdigit():
+                        print("La opcion ha de ser numérica")
+                        input("Pulse una tecla para continuar...\n")
+                    else:
+                        opc = int(opc)
+                        if opc > 4 or opc < 1:
+                            print("La opción ha de estar entre 1 y 4")
+                            input("Pulse una tecla para continuar...\n")
+                        else:
+                            if opc == 1:
+                                print("no implementado")
+                            elif opc == 2:
+                                menu_actual = 32
+                            elif opc == 3:
+
+                                menu_actual = 0
+
+                            elif opc == 4:
+                                menu_actual = 0
+                                break
+
+                            elif opc == 3:
+                                menu_actual = 32
+
+                if opc == 2:
+
+                    print("Opcion aun no implementada")
+
+                if opc == 3:
+                    menu_actual = 32
+                if opc == 4:
+                    menu_actual = 0
+                if opc == 5:
+                    menu_actual = 3
+
+    # while menu_actual == menu0321:
+    #     menu_actual == 321
+    #     print(menu0321)
+    #     opc = input(">Opcion: ")
+    #     if not opc.isdigit():
+    #         print("La opcion ha de ser numérica")
+    #         input("Pulse una tecla para continuar...\n")
+    #     else:
+    #         opc = int(opc)
+    #         if opc > 4 or opc < 1:
+    #             print( "La opción ha de estar entre 1 y 4")
+    #             input("Pulse una tecla para continuar...\n")
+    #         else:
+    #             if opc == 1:
+    #                 print("no implementado")
+    #             elif opc == 2:
+    #                 menu_actual = 32
+    #             elif opc == 3:
+
+    #                 menu_actual = 0
+
+    #             elif opc == 4:
+    #                 menu_actual = 0
